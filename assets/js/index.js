@@ -80,10 +80,12 @@ Source:
           'description',
         ],
     },
+    encode: "simple",
+    tokenize: "forward"
   });
 
-  var docs = [
-    {{ range $index, $page := (where .Site.Pages "Section" "docs") -}}
+  var dfir = [
+    {{ range $index, $page := (where .Site.Pages "Section" "dfir") -}}
       {
         id: {{ $index }},
         href: "{{ .RelPermalink | relURL }}",
@@ -94,7 +96,21 @@ Source:
     {{ end -}}
   ];
 
-  index.add(docs);
+  index.add(dfir);
+
+  var tools = [
+    {{ range $index, $page := (where .Site.Pages "Section" "tools") -}}
+      {
+        id: {{ $index }},
+        href: "{{ .RelPermalink | relURL }}",
+        title: {{ .Title | jsonify }},
+        description: {{ .Params.description | jsonify }},
+        content: {{ .Content | jsonify }}
+      },
+    {{ end -}}
+  ];
+
+  index.add(tools);
 
   userinput.addEventListener('input', show_results, true);
   suggestions.addEventListener('click', accept_suggestion, true);
