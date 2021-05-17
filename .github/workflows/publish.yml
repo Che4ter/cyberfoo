@@ -10,45 +10,37 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os: [ubuntu-latest]
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: 'latest'
-        extended: true
-   
-    - name: Check install Hugo
-      run: hugo version         
-  
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
-    - run: npm ci
-    - run: npm run clean
-    - run: npm run build
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+      
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        # ftp server
-        server: ${{ secrets.SERVER }}
-        # ftp username
-        username: ${{ secrets.USER }}
-        # ftp password
-        password: ${{ secrets.PASSWORD }}
-        local-dir: "public/"
-        # Path to upload to on the server. Must end with trailing slash /
-        server-dir:  ${{ secrets.PATH }}
-        # Path and name of the state file - this file is used to track which files have been deployed
-        log-level: debug
+            # ftp server
+            server: ${{ secrets.SERVER }}
+            # ftp username
+            username: ${{ secrets.USERNAME }}
+            # ftp password
+            password: ${{ secrets.PASSWORD }}
+            protocol: ftps
+            local-dir: ./public/
+            # Path to upload to on the server. Must end with trailing slash /
+            server-dir:  public_html/cyberfoo/
+    
+    
