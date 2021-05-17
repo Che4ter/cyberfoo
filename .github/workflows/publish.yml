@@ -27,7 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm update
     - run: npm run clean
     - run: npm run build
     - name: FTP Deploy
