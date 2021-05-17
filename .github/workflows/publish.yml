@@ -25,6 +25,10 @@ jobs:
       with:
           hugo-version: 'latest'
           extended: true
+          
+    - name: Check install Hugo
+      run: hugo version
+      
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
