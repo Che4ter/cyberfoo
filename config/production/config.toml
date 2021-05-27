@@ -1,2 +1,2 @@
-baseurl = "/"
-canonifyURLs = true
+baseurl = "https://cyberfoo.ch/"
+canonifyURLs = false

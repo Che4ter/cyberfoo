@@ -29,22 +29,23 @@ The following tests were carried out in the test lab, the setup is documented on
 - Domain Admin User: umbrella\redqueen
 
 ## Result Matrix
-| Test Scenarios                                       | Event IDs:                                                        | 4624            | 4648                | 4768 | 4769 | 4776        |
-|------------------------------------------------------|-------------------------------------------------------------------|-----------------|---------------------|------|------|-------------|
-| Local Login                                          | Unprivileged Domain User - First Time on new Machine              | Source, DC      | Source              | DC   | DC   |             |
-|                                                      | Unprivileged Domain User - Second Time                            | Source, DC      | Source              | DC   | DC   |             |
-|                                                      | Domain Administrator                                              | Source, DC      | Source              | DC   | DC   |             |
-|                                                      | Unprivileged Domain User - NTLM Enforced                          | Source          | Source              |      |      | DC          |
-|                                                      | Unprivileged Domain User - No connection to DC/cached credentials | Source          | Source              |      |      |             |
-|                                                      | Local User                                                        | Source          | Source              |      |      | Source      |
-| Run as                                               | Domain User                                                       | Source          | Source              | DC   | DC   |             |
-| RDP Login                                            | Unprivileged Domain User with NLA                                 | Destination, DC | Source, Destination | DC   | DC   |             |
-|                                                      | Unprivileged Local User with NLA                                  | Destination     | Source, Destination |      |      | Destination |
-|                                                      | Unprivileged Domain User without NLA                              | Destination, DC | Source              | DC   | DC   |             |
-|                                                      | Local User without NLA                                            | Destination     | Destination         |      |      | Destination |
-|                                                      | Local User without NLA                                            | Destination     |                     |      |      | Destination |
-| Scenario: SMB Share Mount/Login explicit credentials | Unprivileged Domain User                                          | Destination     | Source              | DC   | DC   |             |
-|                                                      | Local User                                                        | Destination     | Source              |      |      | Destination |
+| Test Scenarios | Event IDs: | 4624 | 4648 | 4768 | 4769 | 4776 |
+|-|-|-|-|-|-|-|
+| Local Login | Unprivileged Domain User - First Time on new Machine | Source, DC | Source | DC | DC |  |
+|  | Unprivileged Domain User - Second Time | Source, DC | Source | DC | DC |  |
+|  | Domain Administrator | Source, DC | Source | DC | DC |  |
+|  | Unprivileged Domain User - NTLM Enforced | Source, DC | Source |  |  | DC |
+|  | Unprivileged Domain User - No connection to DC/cached credentials | Source | Source |  |  |  |
+|  | Local User | Source | Source |  |  | Source |
+| Run as | Domain User | Source | Source | DC | DC |  |
+| RDP Login | Unprivileged Domain User with NLA | Destination, DC | Source, Destination | DC | DC |  |
+|  | Unprivileged Domain User with NLA - NTLM Enforced | Destiation, DC | Destination |  |  | DC |
+|  | Unprivileged Local User with NLA | Destination | Source, Destination |  |  | Destination |
+|  | Unprivileged Domain User without NLA | Destination, DC | Source | DC | DC |  |
+|  | Local User without NLA | Destination | Destination |  |  | Destination |
+|  | Local User without NLA | Destination |  |  |  | Destination |
+| Scenario: SMB Share Mount/Login explicit credentials | Unprivileged Domain User | Destination | Source | DC | DC |  |
+|  | Local User | Destination | Source |  |  | Destination |
 
 ## Local Login 
 
@@ -1252,155 +1253,258 @@ The following tests were carried out in the test lab, the setup is documented on
   - On Source:
     - 4624
     ```
-    An account was successfully logged on.
+	 An account was successfully logged on.
 
-    Subject:
-      Security ID:              S-1-5-18
-      Account Name:             WIN10-01$
-      Account Domain:           UMBRELLA
-      Logon ID:                 0x3E7
+	  Subject:
+		  Security ID:		S-1-5-18
+		  Account Name:		WIN10-01$
+		  Account Domain:		UMBRELLA
+		  Logon ID:		0x3E7
 
     Logon Information:
-      Logon Type:               7
-      Restricted Admin Mode:    -
-      Virtual Account:          No
-      Elevated Token:           No
+      Logon Type:		11
+      Restricted Admin Mode:	-
+      Virtual Account:		No
+      Elevated Token:		No
 
-    Impersonation Level:        Impersonation
+    Impersonation Level:		Impersonation
 
     New Logon:
-      Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
-      Account Name:             charles
-      Account Domain:           UMBRELLA
-      Logon ID:                 0x1A76CD
-      Linked Logon ID:          0x0
-      Network Account Name:     -
-      Network Account Domain:   -
-      Logon GUID:               {00000000-0000-0000-0000-000000000000}
+      Security ID:		S-1-5-21-908899349-1681392183-178755882-1105
+      Account Name:		charles
+      Account Domain:		UMBRELLA
+      Logon ID:		0x17AFB3
+      Linked Logon ID:		0x0
+      Network Account Name:	-
+      Network Account Domain:	-
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Process Information:
-      Process ID:               0x288
-      Process Name:             C:\Windows\System32\lsass.exe
+      Process ID:		0x684
+      Process Name:		C:\Windows\System32\svchost.exe
 
     Network Information:
-      Workstation Name:         WIN10-01
-      Source Network Address:   -
-      Source Port:              -
+      Workstation Name:	WIN10-01
+      Source Network Address:	127.0.0.1
+      Source Port:		0
 
     Detailed Authentication Information:
-      Logon Process:            Negotiat
-      Authentication Package:   Negotiate
-      Transited Services:       -
-      Package Name (NTLM only): -
-      Key Length:               0
+      Logon Process:		User32 
+      Authentication Package:	Negotiate
+      Transited Services:	-
+      Package Name (NTLM only):	-
+      Key Length:		0
     ```
     ```
     An account was successfully logged on.
 
     Subject:
-      Security ID:              S-1-5-18
-      Account Name:             WIN10-01$
-      Account Domain:           UMBRELLA
-      Logon ID:                 0x3E7
+      Security ID:		S-1-5-18
+      Account Name:		WIN10-01$
+      Account Domain:		UMBRELLA
+      Logon ID:		0x3E7
 
     Logon Information:
-      Logon Type:               11
-      Restricted Admin Mode:    -
-      Virtual Account:          No
-      Elevated Token:           No
+      Logon Type:		7
+      Restricted Admin Mode:	-
+      Virtual Account:		No
+      Elevated Token:		No
 
-    Impersonation Level:        Impersonation
+    Impersonation Level:		Impersonation
 
     New Logon:
-      Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
-      Account Name:             charles
-      Account Domain:           UMBRELLA
-      Logon ID:                 0x1726C2
-      Linked Logon ID:          0x0
-      Network Account Name:     -
-      Network Account Domain:   -
-      Logon GUID:               {00000000-0000-0000-0000-000000000000}
+      Security ID:		S-1-5-21-908899349-1681392183-178755882-1105
+      Account Name:		charles
+      Account Domain:		UMBRELLA
+      Logon ID:		0x181ECD
+      Linked Logon ID:		0x0
+      Network Account Name:	-
+      Network Account Domain:	-
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Process Information:
-      Process ID:               0x57c
-      Process Name:             C:\Windows\System32\svchost.exe
+      Process ID:		0x298
+      Process Name:		C:\Windows\System32\lsass.exe
 
     Network Information:
-      Workstation Name:         WIN10-01
-      Source Network Address:   127.0.0.1
-      Source Port:              0
+      Workstation Name:	WIN10-01
+      Source Network Address:	-
+      Source Port:		-
 
     Detailed Authentication Information:
-      Logon Process:            User32 
-      Authentication Package:   Negotiate
-      Transited Services:       -
-      Package Name (NTLM only): -
-      Key Length:               0
-      ```
+      Logon Process:		Negotiat
+      Authentication Package:	Negotiate
+      Transited Services:	-
+      Package Name (NTLM only):	-
+      Key Length:		0
+    ```
     - 4648
     ```
     A logon was attempted using explicit credentials.
 
     Subject:
-      Security ID:            S-1-5-18
-      Account Name:           WIN10-01$
-      Account Domain:         UMBRELLA
-      Logon ID:               0x3E7
-      Logon GUID:             {00000000-0000-0000-0000-000000000000}
+      Security ID:		S-1-5-18
+      Account Name:		WIN10-01$
+      Account Domain:		UMBRELLA
+      Logon ID:		0x3E7
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Account Whose Credentials Were Used:
-      Account Name:           charles
-      Account Domain:         UMBRELLA
-      Logon GUID:             {00000000-0000-0000-0000-000000000000}
+      Account Name:		charles
+      Account Domain:		UMBRELLA
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Target Server:
-      Target Server Name:     localhost
-      Additional Information: localhost
+      Target Server Name:	localhost
+      Additional Information:	localhost
 
     Process Information:
-      Process ID:             0x57c
-      Process Name:           C:\Windows\System32\svchost.exe
+      Process ID:		0x298
+      Process Name:		C:\Windows\System32\lsass.exe
 
     Network Information:
-      Network Address:        127.0.0.1
-      Port:                   0
+      Network Address:	-
+      Port:			-
     ```
     ```
     A logon was attempted using explicit credentials.
 
     Subject:
-      Security ID:            S-1-5-18
-      Account Name:           WIN10-01$
-      Account Domain:         UMBRELLA
-      Logon ID:               0x3E7
-      Logon GUID:             {00000000-0000-0000-0000-000000000000}
+      Security ID:		S-1-5-18
+      Account Name:		WIN10-01$
+      Account Domain:		UMBRELLA
+      Logon ID:		0x3E7
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Account Whose Credentials Were Used:
-      Account Name:           charles
-      Account Domain:         UMBRELLA
-      Logon GUID:             {00000000-0000-0000-0000-000000000000}
+      Account Name:		charles
+      Account Domain:		UMBRELLA
+      Logon GUID:		{00000000-0000-0000-0000-000000000000}
 
     Target Server:
-      Target Server Name:     localhost
-      Additional Information: localhost
+      Target Server Name:	localhost
+      Additional Information:	localhost
 
     Process Information:
-      Process ID:             0x288
-      Process Name:           C:\Windows\System32\lsass.exe
+      Process ID:		0x684
+      Process Name:		C:\Windows\System32\svchost.exe
 
     Network Information:
-      Network Address:        -
-      Port:                   -
+      Network Address:	127.0.0.1
+      Port:			0
     ```
   - On DC:
-    - 4776
+    - 4624
+    ```
+    An account was successfully logged on.
+
+    Subject:
+      Security ID:              S-1-0-0
+      Account Name:             -
+      Account Domain:           -
+      Logon ID:                 0x0
+
+    Logon Information:
+      Logon Type:               3
+      Restricted Admin Mode:    -
+      Virtual Account:          No
+      Elevated Token:           Yes
+
+    Impersonation Level:        Impersonation
+
+    New Logon:
+      Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+      Account Name:             charles
+      Account Domain:           UMBRELLA
+      Logon ID:                 0x7751F98
+      Linked Logon ID:          0x0
+      Network Account Name:     -
+      Network Account Domain:   -
+      Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+    Process Information:
+      Process ID:               0x0
+      Process Name:             -
+
+    Network Information:
+      Workstation Name:         WIN10-01
+      Source Network Address:   10.1.90.4
+      Source Port:              49839
+
+    Detailed Authentication Information:
+      Logon Process:            NtLmSsp 
+      Authentication Package:   NTLM
+      Transited Services:       -
+      Package Name (NTLM only): NTLM V2
+      Key Length:               128
+    ```
+    ```
+    An account was successfully logged on.
+
+    Subject:
+      Security ID:              S-1-0-0
+      Account Name:             -
+      Account Domain:           -
+      Logon ID:                 0x0
+
+    Logon Information:
+      Logon Type:               3
+      Restricted Admin Mode:    -
+      Virtual Account:          No
+      Elevated Token:           Yes
+
+    Impersonation Level:        Impersonation
+
+    New Logon:
+      Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+      Account Name:             charles
+      Account Domain:           UMBRELLA
+      Logon ID:                 0x774FD2D
+      Linked Logon ID:          0x0
+      Network Account Name:     -
+      Network Account Domain:   -
+      Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+    Process Information:
+      Process ID:               0x0
+      Process Name:             -
+
+    Network Information:
+      Workstation Name:         WIN10-01
+      Source Network Address:   10.1.90.4
+      Source Port:              49793
+
+    Detailed Authentication Information:
+      Logon Process:            NtLmSsp 
+      Authentication Package:   NTLM
+      Transited Services:       -
+      Package Name (NTLM only): NTLM V2
+      Key Length:               128
+    ```
+	  - 4776
     ```
     The computer attempted to validate the credentials for an account.
 
-    Authentication Package: MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
-    Logon Account:          charles
-    Source Workstation:     WIN10-01
-    Error Code:             0x0
+    Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+    Logon Account:              charles
+    Source Workstation:         WIN10-01
+    Error Code:                 0x0
+    ```
+    ```
+    The computer attempted to validate the credentials for an account.
+
+    Authentication Package:	MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+    Logon Account:	charles
+    Source Workstation:	WIN10-01
+    Error Code:	0x0
+    ```
+    ```
+    The computer attempted to validate the credentials for an account.
+
+    Authentication Package:	MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+    Logon Account:	charles
+    Source Workstation:	WIN10-01
+    Error Code:	0x0
     ```
 
 ### Unprivileged Domain User - No connection to DC/cached credentials
@@ -2372,6 +2476,328 @@ The following tests were carried out in the test lab, the setup is documented on
       Transited Services:     -
 
     ```
+
+### Unprivileged Domain User with NLA - NTLM enforced
+- User: umbrella\charles
+- Events recorded:
+  - On Destination:
+	- 4624:
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-5-18
+		Account Name:             APP01$
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x3E7
+
+	Logon Type:                 10
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x27DEA17
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x5ec
+		Process Name:             C:\Windows\System32\winlogon.exe
+
+	Network Information:
+		Workstation Name:         APP01
+		Source Network Address:   10.1.90.4
+		Source Port:              0
+
+	Detailed Authentication Information:
+		Logon Process:            User32 
+		Authentication Package:   Negotiate
+		Transited Services:       -
+		Package Name (NTLM only): -
+		Key Length:               0
+	```
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-0-0
+		Account Name:             -
+		Account Domain:           -
+		Logon ID:                 0x0
+
+	Logon Type:                 3
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x27DC8A0
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x0
+		Process Name:             -
+
+	Network Information:
+		Workstation Name:         WIN10-01
+		Source Network Address:   -
+		Source Port:              -
+
+	Detailed Authentication Information:
+		Logon Process:            NtLmSsp 
+		Authentication Package:   NTLM
+		Transited Services:       -
+		Package Name (NTLM only): NTLM V2
+		Key Length:               128
+	```
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-0-0
+		Account Name:             -
+		Account Domain:           -
+		Logon ID:                 0x0
+
+	Logon Type:                 3
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x27DC811
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x0
+		Process Name:             -
+
+	Network Information:
+		Workstation Name:         WIN10-01
+		Source Network Address:   -
+		Source Port:              -
+
+	Detailed Authentication Information:
+		Logon Process:            NtLmSsp 
+		Authentication Package:   NTLM
+		Transited Services:       -
+		Package Name (NTLM only): NTLM V2
+		Key Length:               128
+	```
+	- 4648:
+	```
+	A logon was attempted using explicit credentials.
+
+	Subject:
+		Security ID:              S-1-5-18
+		Account Name:             APP01$
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x3E7
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Account Whose Credentials Were Used:
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Target Server:
+		Target Server Name:       localhost
+		Additional Information:   localhost
+
+	Process Information:
+		Process ID:               0x5ec
+		Process Name:             C:\Windows\System32\winlogon.exe
+
+	Network Information:
+		Network Address:          10.1.90.4
+		Port:                     0
+	```
+  - On DC:
+    - 4624
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-0-0
+		Account Name:             -
+		Account Domain:           -
+		Logon ID:                 0x0
+
+	Logon Information:
+		Logon Type:               3
+		Restricted Admin Mode:    -
+		Virtual Account:          No
+		Elevated Token:           Yes
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x76FFBAE
+		Linked Logon ID:          0x0
+		Network Account Name:     -
+		Network Account Domain:   -
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x0
+		Process Name:             -
+
+	Network Information:
+		Workstation Name:         APP01
+		Source Network Address:   10.2.1.150
+		Source Port:              51793
+
+	Detailed Authentication Information:
+		Logon Process:            NtLmSsp 
+		Authentication Package:   NTLM
+		Transited Services:       -
+		Package Name (NTLM only): NTLM V2
+		Key Length:               128
+	```
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-0-0
+		Account Name:             -
+		Account Domain:           -
+		Logon ID:                 0x0
+
+	Logon Information:
+		Logon Type:               3
+		Restricted Admin Mode:    -
+		Virtual Account:          No
+		Elevated Token:           Yes
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x76FFB87
+		Linked Logon ID:          0x0
+		Network Account Name:     -
+		Network Account Domain:   -
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x0
+		Process Name:             -
+
+	Network Information:
+		Workstation Name:         APP01
+		Source Network Address:   10.2.1.150
+		Source Port:		51792
+
+	Detailed Authentication Information:
+		Logon Process:            NtLmSsp 
+		Authentication Package:   NTLM
+		Transited Services:       -
+		Package Name (NTLM only): NTLM V2
+		Key Length:               128
+	```
+	```
+	An account was successfully logged on.
+
+	Subject:
+		Security ID:              S-1-0-0
+		Account Name:             -
+		Account Domain:           -
+		Logon ID:                 0x0
+
+	Logon Information:
+		Logon Type:               3
+		Restricted Admin Mode:    -
+		Virtual Account:          No
+		Elevated Token:           Yes
+
+	Impersonation Level:        Impersonation
+
+	New Logon:
+		Security ID:              S-1-5-21-908899349-1681392183-178755882-1105
+		Account Name:             charles
+		Account Domain:           UMBRELLA
+		Logon ID:                 0x76FFAF8
+		Linked Logon ID:          0x0
+		Network Account Name:     -
+		Network Account Domain:   -
+		Logon GUID:               {00000000-0000-0000-0000-000000000000}
+
+	Process Information:
+		Process ID:               0x0
+		Process Name:             -
+
+	Network Information:
+		Workstation Name:         APP01
+		Source Network Address:   10.2.1.150
+		Source Port:              51790
+
+	Detailed Authentication Information:
+		Logon Process:            NtLmSsp 
+		Authentication Package:   NTLM
+		Transited Services:       -
+		Package Name (NTLM only): NTLM V2
+		Key Length:               128
+	```
+	- 4776:
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         APP01
+	Error Code:                 0x0
+	```
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         APP01
+	Error Code:                 0x0
+	```
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         APP01
+	Error Code:                 0x0
+	```
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         APP01
+	Error Code:                 0x0
+	```
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         WIN10-01
+	Error Code:                 0x0
+	```
+	```
+	The computer attempted to validate the credentials for an account.
+
+	Authentication Package:     MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+	Logon Account:              charles
+	Source Workstation:         WIN10-01
+	Error Code:                 0x0
+	```
 
 ### Unprivileged Local User with NLA
 - User: APP01\Administrator

@@ -1,2 +1,2 @@
-baseurl = "https://doks-next.netlify.app/"
-canonifyURLs = true
+baseurl = "https://cyberfoo.ch/"
+canonifyURLs = false
