@@ -66,7 +66,7 @@ The following is a cheat sheet of useful Windows Event logs.
 - **Additional Recommendations**: Even if Client logs are not available, still collect the log on the domain controller
 
 ## 4648: A logon was attempted using explicit credentials.
-This event is generated when a process attempts an account logon by explicitly specifying that account’s credentials. Regardless of whether the attempt was successful or not.. This most commonly occurs in batch-type configurations such as scheduled tasks, or when using the “RUNAS” command.
+This event is generated when a process attempts an account logon by explicitly specifying that account’s credentials. Regardless of whether the attempt was successful or not. This most commonly occurs in batch-type configurations such as scheduled tasks, or when using the “RUNAS” command.
 - **Log Source**: Client - This event is generated on the computer from where the logon attempt was made.
 - **Policy**: Logon/Logoff audit - Logon
 - **Type**: Success
@@ -77,10 +77,11 @@ This event is generated when a process attempts an account logon by explicitly s
   - Subject: _(Who is doing the logon)_
     - Account Name
     - Account Domain
-  - Account For Which Logon Failed:
+    - Logon ID
+  - Account Whose Credentials Were Used:
     - Account Name
     - Account Domain
-    - Logon ID
+    - Logon GUID
   - Target Server
     - Target Server Name _(For example when using SharePoint, blank or localhost means local computer)_
   - Network Information: 
