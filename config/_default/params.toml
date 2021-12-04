@@ -6,17 +6,24 @@ titleSeparator = "-"
 titleAddition = "Just another personal website to document cyber related stuff"
 description = "Just another personal website to document cyber related stuff"
 
-## Open Graph + Twitter Cards
+## Documentation
+# docsVersion = "0.3"
+
+## Open Graph
 images = ["doks.png"]
 twitterSite = ""
 twitterCreator = ""
 facebookAuthor = ""
 facebookPublisher = ""
 ogLocale = "en_US"
+domainTLD = "cyberfoo.ch"
+titleHome = "Cyber Cyber"
+
+
 
 ## JSON-LD
 schemaType = "Organization"
-schemaLogo = "logo-doks.png"
+schemaLogo = ""
 schemaTwitter = ""
 schemaLinkedIn = ""
 schemaGitHub = "https://github.com/Che4ter"
@@ -34,12 +41,18 @@ bgColor = "#fff"
 landscapePhotoWidths = [900, 800, 700, 600, 500]
 portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
+smallLimit = "300"
 
 # Footer
 footer = "Powered by <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
 
+# Feed
+copyRight = ""
+
 # Alert
 alert = false
+alertDismissable = true
+# alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
 alertText = ""
 
 # Edit Page
@@ -52,7 +65,10 @@ editPage = false
   instantPage = true
   flexSearch = true
   darkMode = true
-  bootStrapJs = false
+  bootStrapJs = true
   breadCrumb = false
   highLight = true
   kaTex = false
+  collapsibleSidebar = false
+  multilingualMode = false
+  docsVersioning = false
