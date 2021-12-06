@@ -34,18 +34,23 @@
   identifier = "guides"
   url = "/dfir/guides/"
 
+[[tools]]
+  name = "DFIR Tools"
+  weight = 10
+  identifier = "dfir_tools"
+  url = "/tools/dfir_tools/"
+
+[[tools]]
+  name = "Hardening & Mitigation Tools"
+  weight = 20
+  identifier = "hardening_mitigation_tools"
+  url = "/tools/hardening_mitigation_tools/"
 
 [[tools]]
   name = "Attacker Tools"
-  weight = 10
+  weight = 30
   identifier = "attacker_tools"
   url = "/tools/attacker_tools/"
-
-[[tools]]
-  name = "DFIR Tools"
-  weight = 20
-  identifier = "dfir_tools"
-  url = "/tools/dfir_tools/"
 
 [[main]]
   name = "DFIR"
