@@ -43,7 +43,6 @@ The following tests were carried out in the test lab, the setup is documented on
 |  | Unprivileged Local User with NLA | Destination | Source, Destination |  |  | Destination |
 |  | Unprivileged Domain User without NLA | Destination, DC | Source | DC | DC |  |
 |  | Local User without NLA | Destination | Destination |  |  | Destination |
-|  | Local User without NLA | Destination |  |  |  | Destination |
 | Scenario: SMB Share Mount/Login explicit credentials | Unprivileged Domain User | Destination | Source | DC | DC |  |
 |  | Local User | Destination | Source |  |  | Destination |
 
